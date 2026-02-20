@@ -1,0 +1,69 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { contact } from "@/data/resume";
+
+export const ContactPanel = () => {
+  return (
+    <section
+      id="contact"
+      className="flex min-h-dvh w-full items-center overflow-y-auto border-t border-white/15 px-8 py-16 md:px-16 lg:px-24"
+      aria-labelledby="contact-heading"
+    >
+      <div className="mx-auto w-full max-w-4xl py-8">
+        <motion.h2
+          id="contact-heading"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          className="font-display text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl"
+        >
+          Let&apos;s connect
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-6 text-lg text-white/85 md:text-xl"
+        >
+          Got a project that&apos;s so cool, it could make an iceberg crack a smile? Let&apos;s grab a virtual brainstorm session and make it even cooler!
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-8 flex flex-wrap gap-6"
+        >
+          <a
+            href={`mailto:${contact.email}`}
+            className="text-lg font-medium underline decoration-white/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
+            aria-label={`Email ${contact.email}`}
+          >
+            Shoot me an email
+          </a>
+          <a
+            href={contact.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-lg font-medium underline decoration-white/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
+            aria-label={`LinkedIn ${contact.linkedinLabel}`}
+          >
+            LinkedIn
+          </a>
+        </motion.div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-12 text-sm text-white/50"
+        >
+          References available upon request.
+        </motion.p>
+        <footer className="mt-20 border-t border-white/10 pt-8 text-center text-sm text-white/40">
+          <p>© {new Date().getFullYear()} {contact.name}.</p>
+          <p className="mt-2">Thanks for dropping by! Stay connected and join me on my journey.</p>
+        </footer>
+      </div>
+    </section>
+  );
+};
