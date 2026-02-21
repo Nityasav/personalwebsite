@@ -2,15 +2,18 @@
 
 import { motion } from "framer-motion";
 import { awardsAndClubs } from "@/data/resume";
+import { DecorativePhoto } from "./DecorativePhoto";
 
 export const AwardsPanel = () => {
   return (
     <section
       id="awards"
-      className="flex min-h-dvh w-full items-center overflow-y-auto border-t border-white/15 px-8 py-16 md:px-16 lg:px-24"
+      className="relative flex min-h-dvh w-full items-center overflow-y-auto border-t border-white/15 px-8 py-16 md:px-16 lg:px-24"
       aria-labelledby="awards-heading"
     >
-      <div className="mx-auto w-full max-w-4xl py-8">
+      <DecorativePhoto src="/images/photography/awards-1.jpeg" alt="" corner="topLeft" rotation={-3} width={250} />
+      <DecorativePhoto src="/images/photography/awards-2.jpeg" alt="" corner="bottomRight" rotation={6} width={260} />
+      <div className="relative z-10 mx-auto w-full max-w-4xl py-8">
         <motion.h2
           id="awards-heading"
           initial={{ opacity: 0, y: 20 }}

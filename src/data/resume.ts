@@ -1,9 +1,16 @@
+/** Edit these once; used for LinkedIn and project link redirects. */
+const PROFILE_LINKS = {
+  linkedin: "https://www.linkedin.com/in/nityasav",
+  github: "https://github.com/Nityasav",
+  devpost: "https://devpost.com/savnitya?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav",
+} as const;
+
 export const contact = {
   name: "Nitya Savaliya",
   tagline:
     "Naturally curious and driven to push the limits of technology, with a focus on learning, adapting, and executing to turn ideas into practical results.",
   email: "email@nitya.ca",
-  linkedin: "https://linkedin.com/in/nitya-savaliya",
+  linkedin: PROFILE_LINKS.linkedin,
   linkedinLabel: "Nitya Savaliya",
 } as const;
 
@@ -91,8 +98,8 @@ export const projects: Project[] = [
     shortDescription: "NLP-based sentiment analysis using VADER, RoBERTa, and Transformers.",
     stack: "VADER, RoBERTa, Transformers",
     links: [
-      { label: "Article", href: "#" },
-      { label: "Github", href: "#" },
+      { label: "Article", href: "https://medium.com/@nityasav/enhancing-review-efficiency-through-sentiment-analysis-a-comparison-of-vader-and-roberta-c6920c9946f8" },
+      { label: "Github", href: "https://github.com/Nityasav/SentimentAnalysisAmazon" },
     ],
     imagePlaceholderKey: "project-sentiment-analysis",
   },
@@ -102,8 +109,8 @@ export const projects: Project[] = [
     shortDescription: "Automated text summarization with BeautifulSoup and transformer pipelines.",
     stack: "BeautifulSoup, transformers, pipelines",
     links: [
-      { label: "Article", href: "#" },
-      { label: "Github", href: "#" },
+      { label: "Article", href: "https://medium.com/@nityasav/saving-time-with-ai-building-a-text-summarizer-using-transformers-1d9888081889" },
+      { label: "Github", href: "https://github.com/Nityasav/Textsummarizer" },
     ],
     imagePlaceholderKey: "project-text-summarizer",
   },
@@ -113,8 +120,8 @@ export const projects: Project[] = [
     shortDescription: "Personalized news aggregation and summarization.",
     stack: "News API, requests, pipelines, personalization",
     links: [
-      { label: "Article", href: "#" },
-      { label: "Github", href: "#" },
+      { label: "Article", href: "https://medium.com/@nityasav/ever-since-i-was-a-kid-i-have-always-been-attached-to-the-ever-changing-world-where-active-wars-824edbd6ffc5" },
+      { label: "Github", href: "https://github.com/Nityasav/PersonalizedNewsDigestor" },
     ],
     imagePlaceholderKey: "project-news-digestor",
   },
@@ -124,8 +131,8 @@ export const projects: Project[] = [
     shortDescription: "Hackathon project — therapy AI chatbot (satirical wrong advice).",
     stack: "Hackathon",
     links: [
-      { label: "Github", href: "#" },
-      { label: "Deck", href: "#" },
+      { label: "Github", href: "https://github.com/Nityasav/thera-buddy-main" },
+      { label: "Deck", href: "https://docs.google.com/presentation/d/12THspqR1iqiQOVjlNwVvRMvD6ZMSEmxNipcN1AcsbxI/edit?usp=sharing" },
     ],
     imagePlaceholderKey: "project-therapeigh",
   },
@@ -135,8 +142,8 @@ export const projects: Project[] = [
     shortDescription: "Superconnector for hackathon teams through a voice AI agent.",
     stack: "Hackathon",
     links: [
-      { label: "Github", href: "#" },
-      { label: "Devpost", href: "#" },
+      { label: "Github", href: "https://github.com/Nityasav/hackbuddy" },
+      { label: "Devpost", href: "https://devpost.com/software/hackbuddy-dxp4fa" },
     ],
     imagePlaceholderKey: "project-hackbuddy",
   },
@@ -146,8 +153,8 @@ export const projects: Project[] = [
     shortDescription: "Helping people connect by combining Pokémon Go and LinkedIn.",
     stack: "Hackathon",
     links: [
-      { label: "Devpost", href: "#" },
-      { label: "Github", href: "#" },
+      { label: "Devpost", href: "https://devpost.com/software/konnect-uqfmc3" },
+      { label: "Github", href: "https://github.com/Nityasav/konnect" },
     ],
     imagePlaceholderKey: "project-konnect",
   },
@@ -158,24 +165,25 @@ export const projects: Project[] = [
     stack: "TKS Startup",
     links: [
       { label: "venturly.ca", href: "https://venturly.ca" },
-      { label: "Masterplan", href: "#" },
-      { label: "One-pager", href: "#" },
+      { label: "Masterplan", href: "https://medium.com/@nityasav/masterplan-venturly-3fa98e25d5bb" },
     ],
     imagePlaceholderKey: "project-venturly",
   },
   {
-    id: "inventory-agent",
-    title: "Inventory tracking AI Agent",
-    shortDescription: "Helps businesses and customers keep track of inventory and ask about it.",
-    stack: "AI Agent",
-    links: [{ label: "Github", href: "#" }],
-    imagePlaceholderKey: "project-inventory-agent",
+    id: "samsung-proposal",
+    title: "Samsung Executive Proposal",
+    shortDescription: "1st place in TKS International Samsung Challenge out of ~100 teams. Executive-level proposal for Samsung.",
+    stack: "TKS Challenge",
+    links: [
+      { label: "Deck", href: "https://docs.google.com/presentation/d/1Zlzny-Ez2OgGBhXMd_LoZtWCb4vl9bEW-05RnB1ipsc/edit?usp=sharing" },
+    ],
+    imagePlaceholderKey: "project-samsung-proposal",
   },
   {
     id: "others",
     title: "Others",
     shortDescription:
-      "Deep Dive into Ray Tracing and AI, Samsung Executive Proposal, Ikea Executive Proposal, Hypnosis Horror Game UE5, Discord Movie Bot.",
+      "Deep Dive into Ray Tracing and AI, Ikea Executive Proposal, Hypnosis Horror Game UE5, Discord Movie Bot, Inventory tracking AI Agent.",
     stack: "Various",
     links: [],
     imagePlaceholderKey: "project-others",

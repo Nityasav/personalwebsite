@@ -2,15 +2,18 @@
 
 import { motion } from "framer-motion";
 import { contact } from "@/data/resume";
+import { DecorativePhoto } from "./DecorativePhoto";
 
 export const ContactPanel = () => {
   return (
     <section
       id="contact"
-      className="flex min-h-dvh w-full items-center overflow-y-auto border-t border-white/15 px-8 py-16 md:px-16 lg:px-24"
+      className="relative flex min-h-dvh w-full items-center overflow-y-auto border-t border-white/15 px-8 py-16 md:px-16 lg:px-24"
       aria-labelledby="contact-heading"
     >
-      <div className="mx-auto w-full max-w-4xl py-8">
+      <DecorativePhoto src="/images/photography/contact-1.jpeg" alt="" corner="topLeft" rotation={-3} width={260} />
+      <DecorativePhoto src="/images/photography/contact-2.jpeg" alt="" corner="bottomRight" rotation={5} width={250} />
+      <div className="relative z-10 mx-auto w-full max-w-4xl py-8">
         <motion.h2
           id="contact-heading"
           initial={{ opacity: 0, y: 20 }}

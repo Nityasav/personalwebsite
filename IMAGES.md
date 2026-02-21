@@ -12,7 +12,7 @@ Add your images to `public/images/placeholders/` using these **exact filenames**
 | `project-hackbuddy.png` | Projects | Hackbuddy project visual |
 | `project-konnect.png` | Projects | konnect project visual |
 | `project-venturly.png` | Projects | Venturly project visual |
-| `project-inventory-agent.png` | Projects | Inventory tracking AI Agent project visual |
+| `project-samsung-proposal.png` | Projects | Samsung Executive Proposal project visual |
 | `project-others.png` | Projects | "Others" (Ray Tracing, Samsung, Ikea, UE5, Discord bot) — collage or representative image |
 
 **Optional**
@@ -20,5 +20,23 @@ Add your images to `public/images/placeholders/` using these **exact filenames**
 | Filename | Section | Purpose |
 |----------|---------|---------|
 | `hero-bg-or-portrait.png` | Hero | Optional hero background or portrait (not wired by default; can be added to Hero component) |
+
+**Photography (corner photos across the site)**  
+Add your photos to `public/images/photography/` using these filenames. They appear rotated in corners and are grayscale. If a file is missing, that photo is hidden.
+
+| Filename | Section |
+|----------|---------|
+| `about-1.jpeg` | About (top right) |
+| `about-2.jpeg` | About (bottom left) |
+| `experience-1.jpeg` | Experience (top left) |
+| `experience-2.jpeg` | Experience (bottom right) |
+| `projects-1.jpeg` | Projects (top right) |
+| `projects-2.jpeg` | Projects (bottom left) |
+| `education-1.jpeg` | Education (top right) |
+| `education-2.jpeg` | Education (bottom left) |
+| `awards-1.jpeg` | Awards (top left) |
+| `awards-2.jpeg` | Awards (bottom right) |
+| `contact-1.jpeg` | Contact (top left) |
+| `contact-2.jpeg` | Contact (bottom right) |
 
 **Suggested specs:** Landscape or square for project cards (aspect 16:10 is used). Portrait or square for about. B&W or grayscale recommended; the site applies `filter: grayscale(100%)` to all images.

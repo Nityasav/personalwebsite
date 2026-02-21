@@ -30,8 +30,8 @@ body {
   font-family: var(--font-display), system-ui, sans-serif;
 }
 
-/* Strict B&W: no color bleed */
-img {
+/* Strict B&W: no color bleed — decorative photography stays in color */
+img:not(.photo-color) {
   filter: grayscale(100%);
 }
 

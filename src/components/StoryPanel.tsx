@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { contact } from "@/data/resume";
+import { DecorativePhoto } from "./DecorativePhoto";
 
 const PLACEHOLDER_ABOUT = "about-portrait";
 
@@ -11,7 +12,9 @@ export const StoryPanel = () => {
       className="relative flex min-h-dvh w-full items-center border-t border-white/15 px-8 py-16 md:px-16 lg:px-24"
       aria-labelledby="story-heading"
     >
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
+      <DecorativePhoto src="/images/photography/about-1.jpeg" alt="" corner="topRight" rotation={-6} width={280} />
+      <DecorativePhoto src="/images/photography/about-2.jpeg" alt="" corner="bottomLeft" rotation={4} width={260} />
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-20">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}

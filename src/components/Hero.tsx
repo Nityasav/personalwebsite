@@ -99,7 +99,7 @@ export const Hero = () => {
           variants={item}
           className="mt-16 text-sm uppercase tracking-widest text-white/50"
         >
-          Start your digital voyage with a scroll
+          
         </motion.p>
       </motion.div>
 

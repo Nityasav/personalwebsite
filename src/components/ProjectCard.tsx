@@ -9,10 +9,7 @@ type ProjectCardProps = {
 };
 
 export const ProjectCard = ({ project, index }: ProjectCardProps) => {
-  const placeholderPath = `/images/placeholders/${project.imagePlaceholderKey}.png`;
-  const placeholderLabel = project.imagePlaceholderKey
-    .replace("project-", "")
-    .replace(/-/g, " ");
+  const imagePath = `/images/placeholders/${project.imagePlaceholderKey}.png`;
 
   return (
     <motion.article
@@ -23,21 +20,10 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
       className="group flex flex-col overflow-hidden rounded-none border border-white/10 bg-white/[0.02] transition-colors hover:border-white/20 hover:bg-white/[0.04]"
     >
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-white/5">
-        <div
-          className="absolute inset-0 flex items-center justify-center text-center text-sm text-white/30"
-          aria-hidden="true"
-        >
-          {placeholderLabel}
-        </div>
-        {/* Add image to public/images/placeholders/ with filename: {project.imagePlaceholderKey}.png */}
         <img
-          src={placeholderPath}
+          src={imagePath}
           alt={project.title}
-          className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300"
-          onLoad={(e) => {
-            e.currentTarget.classList.remove("opacity-0");
-            e.currentTarget.classList.add("opacity-100");
-          }}
+          className="absolute inset-0 h-full w-full object-cover"
           onError={(e) => {
             e.currentTarget.style.display = "none";
           }}
