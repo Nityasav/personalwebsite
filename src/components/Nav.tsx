@@ -2,7 +2,12 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useCallback } from "react";
-import { SCROLL_OFFSET_VH, type ScrollKey } from "@/lib/scroll";
+import { useIsMobile } from "@/hooks/useMediaQuery";
+import {
+  HORIZONTAL_PROGRESS,
+  HORIZONTAL_SCROLL_TO_EVENT,
+  type ScrollKey,
+} from "@/lib/scroll";
 
 const isTouchDevice = () =>
   typeof window !== "undefined" && ("ontouchstart" in window || navigator.maxTouchPoints > 0);
@@ -13,27 +18,47 @@ const SECTIONS = [
   { id: "contact", label: "Contact", navLabel: "Contact", scrollKey: "contact" as const },
 ] as const;
 
+const MOBILE_SECTION_IDS: Record<string, string> = {
+  "horizontal-scroll": "story",
+  projects: "projects",
+  contact: "contact",
+};
+
 export const Nav = () => {
   const [open, setOpen] = useState(false);
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll();
   const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
-  const handleNavClick = useCallback((id: string, scrollKey?: ScrollKey) => {
-    setOpen(false);
-    const useSmooth = !isTouchDevice();
-    const scrollOpts: ScrollToOptions = { behavior: useSmooth ? "smooth" : "auto" };
-    const horizontal = document.getElementById("horizontal-scroll");
-    if (horizontal && scrollKey !== undefined) {
-      const top = horizontal.getBoundingClientRect().top + window.scrollY;
-      const vhPx = window.innerHeight;
-      const offsetVh = SCROLL_OFFSET_VH[scrollKey];
-      const targetScroll = top + (offsetVh * vhPx) / 100;
-      window.scrollTo({ top: targetScroll, ...scrollOpts });
-      return;
-    }
-    const el = document.getElementById(id);
-    el?.scrollIntoView(scrollOpts);
-  }, []);
+  const handleNavClick = useCallback(
+    (id: string, scrollKey?: ScrollKey) => {
+      setOpen(false);
+      const useSmooth = !isTouchDevice();
+      const scrollOpts: ScrollToOptions = { behavior: useSmooth ? "smooth" : "auto" };
+
+      if (isMobile) {
+        const targetId = MOBILE_SECTION_IDS[id] ?? id;
+        const el = document.getElementById(targetId);
+        el?.scrollIntoView(scrollOpts);
+        return;
+      }
+
+      const horizontal = document.getElementById("horizontal-scroll");
+      if (horizontal && scrollKey !== undefined) {
+        const sectionStart = horizontal.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: sectionStart, ...scrollOpts });
+        window.dispatchEvent(
+          new CustomEvent(HORIZONTAL_SCROLL_TO_EVENT, {
+            detail: { progress: HORIZONTAL_PROGRESS[scrollKey] },
+          })
+        );
+        return;
+      }
+      const el = document.getElementById(id);
+      el?.scrollIntoView(scrollOpts);
+    },
+    [isMobile]
+  );
 
   const handleKeyDown = (
     e: React.KeyboardEvent<HTMLButtonElement>,
@@ -97,7 +122,7 @@ export const Nav = () => {
       </motion.nav>
 
       {/* Mobile menu button - hamburger */}
-      <div className="fixed right-6 top-8 z-20 md:hidden">
+      <div className="fixed right-4 top-[max(2rem,env(safe-area-inset-top))] z-20 md:hidden">
         <button
           type="button"
           onClick={() => setOpen((o) => !o)}

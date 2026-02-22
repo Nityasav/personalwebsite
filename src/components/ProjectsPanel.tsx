@@ -10,16 +10,17 @@ type ProjectsPanelProps = {
 };
 
 export const ProjectsPanel = ({ innerScrollY }: ProjectsPanelProps) => {
+  const useInnerScroll = Boolean(innerScrollY);
   return (
     <section
       id="projects"
-      className="relative flex h-dvh w-full flex-col overflow-hidden border-t border-white/15"
+      className={`relative flex w-full flex-col border-t border-white/15 ${useInnerScroll ? "md:h-dvh md:overflow-hidden" : ""} min-h-dvh`}
       aria-labelledby="projects-heading"
     >
       <DecorativePhoto src="/images/photography/projects-1.jpeg" alt="" corner="topRight" rotation={3} width={230} />
       <DecorativePhoto src="/images/photography/projects-2.jpeg" alt="" corner="bottomLeft" rotation={-5} width={220} />
       <motion.div
-        className="relative z-10 w-full flex-1 px-8 pt-16 pb-[120vh] md:px-16 md:pt-20 lg:px-24"
+        className={`relative z-10 w-full flex-1 px-8 pt-16 md:px-16 md:pt-20 lg:px-24 ${useInnerScroll ? "pb-[120vh]" : "pb-16"}`}
         style={innerScrollY ? { y: innerScrollY } : undefined}
       >
         <div className="mx-auto w-full max-w-6xl">
@@ -36,7 +37,7 @@ export const ProjectsPanel = ({ innerScrollY }: ProjectsPanelProps) => {
               >
                 Selected projects
               </h2>
-              <p className="mt-1 text-sm uppercase tracking-widest text-white/50">
+              <p className="mt-1 text-sm uppercase tracking-widest text-red-900">
                 2022–2025
               </p>
             </div>

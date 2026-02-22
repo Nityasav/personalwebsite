@@ -1,33 +1,29 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { contact } from "@/data/resume";
 
 const GREETINGS = ["HELLO", "NAMASTE", "HOLA", "Bonjour", "Olá"];
 
-const getContainer = (reduceMotion: boolean | null) => ({
+const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: reduceMotion
-      ? { staggerChildren: 0, delayChildren: 0 }
-      : { staggerChildren: 0.08, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.08, delayChildren: 0.2 },
   },
-});
+};
 
 const item = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0 },
 };
 
-const getWordContainer = (reduceMotion: boolean | null) => ({
+const wordContainer = {
   hidden: {},
   show: {
-    transition: reduceMotion
-      ? { staggerChildren: 0, delayChildren: 0 }
-      : { staggerChildren: 0.06, delayChildren: 0.9 },
+    transition: { staggerChildren: 0.06, delayChildren: 0.9 },
   },
-});
+};
 
 const word = {
   hidden: { opacity: 0, y: 10 },
@@ -36,17 +32,15 @@ const word = {
 
 export const Hero = () => {
   const taglineWords = contact.tagline.split(/\s+/);
-  const reduceMotion = useReducedMotion();
 
   return (
     <section
       id="hero"
-      className="relative flex min-h-dvh flex-col justify-center overflow-hidden px-6 pt-24 pb-20 md:px-12 lg:px-20"
+      className="relative flex min-h-dvh min-h-[100dvh] flex-col justify-center overflow-hidden px-4 pt-[max(6rem,env(safe-area-inset-top))] pb-20 md:px-12 md:pt-24 lg:px-20"
       aria-label="Hero"
     >
-      {/* Background: skip grayscale on mobile to reduce GPU cost and lag */}
       <div
-        className="absolute inset-0 z-0 bg-cover bg-no-repeat bg-[url(/background.jpeg)] [background-position:-310%_top] md:grayscale"
+        className="absolute inset-0 z-0 bg-cover bg-no-repeat bg-[url(/background.jpeg)] [background-position:-350%_top] [filter:grayscale(100%)]"
         aria-hidden="true"
       />
       <div className="absolute inset-0 z-[1] bg-black/50" aria-hidden="true" />
@@ -69,7 +63,7 @@ export const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.5 }}
-        className="absolute left-6 right-6 top-32 z-10 flex flex-wrap gap-x-4 gap-y-1 text-sm uppercase tracking-[0.35em] text-white/40 md:left-12 md:right-12 md:top-36 md:text-base"
+        className="absolute left-4 right-4 top-28 z-10 flex flex-wrap gap-x-4 gap-y-1 text-xs uppercase tracking-[0.3em] text-white/40 md:left-12 md:right-12 md:top-36 md:text-base md:tracking-[0.35em]"
         aria-hidden="true"
       >
         {GREETINGS.map((g, i) => (
@@ -85,14 +79,14 @@ export const Hero = () => {
       </motion.div>
 
       <motion.div
-        variants={getContainer(reduceMotion ?? false)}
+        variants={container}
         initial="hidden"
         animate="show"
         className="relative z-10 max-w-4xl"
       >
         <motion.p
           variants={item}
-          className="font-display text-sm uppercase tracking-[0.4em] text-white/50 md:text-base"
+          className="font-display text-sm uppercase tracking-[0.4em] text-red-900 md:text-base"
         >
           <motion.span
             initial={{ opacity: 0, letterSpacing: "0.6em" }}
@@ -105,14 +99,14 @@ export const Hero = () => {
 
         <motion.h1
           variants={item}
-          className="mt-2 font-display text-5xl font-semibold tracking-tight text-white md:text-7xl lg:text-8xl"
+          className="mt-2 font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-7xl lg:text-8xl"
         >
           {contact.name}
         </motion.h1>
 
         {/* Drawing underline under name */}
         <motion.div
-          className="mt-1 h-0.5 max-w-md bg-gradient-to-r from-white/80 to-white/20"
+          className="mt-1 h-0.5 max-w-md bg-gradient-to-r from-red-900 to-red-800"
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ delay: 0.5, duration: 0.6 }}
@@ -122,7 +116,7 @@ export const Hero = () => {
 
         {/* Tagline - word by word */}
         <motion.p
-          variants={getWordContainer(reduceMotion ?? false)}
+          variants={wordContainer}
           initial="hidden"
           animate="show"
           className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl"
@@ -160,12 +154,12 @@ export const Hero = () => {
         </motion.p>
       </motion.div>
 
-      {/* Repeating name marquee — slower on mobile to reduce paint cost */}
+      {/* Repeating name marquee */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: reduceMotion ? 0 : 1.2, duration: reduceMotion ? 0.2 : 0.6 }}
-        className="absolute bottom-6 left-0 right-0 z-10 overflow-hidden md:bottom-8"
+        transition={{ delay: 1.2, duration: 0.6 }}
+        className="absolute bottom-6 left-0 right-0 z-10 overflow-hidden pb-[env(safe-area-inset-bottom)] md:bottom-8 md:pb-0"
         aria-hidden="true"
       >
         <div className="flex w-max animate-marquee whitespace-nowrap">
@@ -174,7 +168,7 @@ export const Hero = () => {
               {[...Array(6)].map((_, i) => (
                 <span
                   key={`${copy}-${i}`}
-                  className="mx-4 font-display text-xl font-medium uppercase tracking-[0.3em] text-white/20 md:mx-6 md:text-2xl lg:mx-8"
+                  className="mx-4 font-display text-xl font-medium uppercase tracking-[0.3em] text-red-900/80 md:mx-6 md:text-2xl lg:mx-8"
                 >
                   {contact.name.toUpperCase()}
                 </span>

@@ -8,7 +8,7 @@ export const EducationPanel = () => {
   return (
     <section
       id="education"
-      className="relative flex min-h-dvh w-full items-center overflow-y-auto border-t border-white/15 px-8 py-16 md:px-16 lg:px-24"
+      className="relative flex min-h-dvh w-full items-center overflow-visible border-t border-white/15 px-8 py-16 md:overflow-y-auto md:px-16 lg:px-24"
       aria-labelledby="education-heading"
     >
       <DecorativePhoto src="/images/photography/education-1.jpeg" alt="" corner="topRight" rotation={-4} width={220} />
@@ -38,7 +38,7 @@ export const EducationPanel = () => {
                 {entry.name}
               </h3>
               <p className="mt-1 text-white/70">{entry.detail}</p>
-              <p className="mt-1 text-sm text-white/50">{entry.dateRange}</p>
+              <p className="mt-1 text-sm text-red-900">{entry.dateRange}</p>
               {entry.bullets && (
                 <ul className="mt-3 list-inside list-disc space-y-1 text-sm text-white/80">
                   {entry.bullets.map((bullet, i) => (

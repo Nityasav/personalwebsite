@@ -22,11 +22,18 @@ export const metadata: Metadata = {
     "Breaking through building. Learning through building. Building through breaking. Software Engineer, builder, and explorer. ",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+};
+
 type RootLayoutProps = Readonly<{ children: React.ReactNode }>;
 
 const RootLayout = ({ children }: RootLayoutProps) => (
   <html lang="en" className={`${syne.variable} ${dmSans.variable}`}>
-    <body className="min-h-screen bg-black text-white antialiased">
+    <body className="min-h-screen min-h-[100dvh] overflow-x-hidden bg-black text-white antialiased">
       <AmbientBackground />
       <Cursor />
       {children}

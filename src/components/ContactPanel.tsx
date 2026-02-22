@@ -8,11 +8,11 @@ export const ContactPanel = () => {
   return (
     <section
       id="contact"
-      className="relative flex min-h-dvh w-full items-center overflow-y-auto border-t border-white/15 px-8 py-16 md:px-16 lg:px-24"
+      className="relative flex min-h-dvh w-full items-center overflow-visible border-t border-white/15 px-8 py-16 md:overflow-y-auto md:px-16 lg:px-24"
       aria-labelledby="contact-heading"
     >
-      <DecorativePhoto src="/images/photography/contact-1.jpeg" alt="" corner="topLeft" rotation={-3} width={220} />
-      <DecorativePhoto src="/images/photography/contact-2.jpeg" alt="" corner="bottomRight" rotation={5} width={210} />
+      <DecorativePhoto src="/images/photography/contact-1.jpeg" alt="" corner="topLeft" rotation={-3} width={260} />
+      <DecorativePhoto src="/images/photography/contact-2.jpeg" alt="" corner="bottomRight" rotation={5} width={250} />
       <div className="relative z-10 mx-auto w-full max-w-4xl py-8">
         <motion.h2
           id="contact-heading"
@@ -29,7 +29,7 @@ export const ContactPanel = () => {
           viewport={{ once: true }}
           className="mt-6 text-lg text-white/85 md:text-xl"
         >
-         I always love to meet new people. It is necessary to surround yourself with people who are better than you. After all, if you are the smartest person in the room, you are in the wrong room. Would love to connect with you!
+          Got a project that&apos;s so cool, it could make an iceberg crack a smile? Let&apos;s grab a virtual brainstorm session and make it even cooler!
         </motion.p>
         <motion.div
           initial={{ opacity: 0 }}
@@ -39,7 +39,7 @@ export const ContactPanel = () => {
         >
           <a
             href={`mailto:${contact.email}`}
-            className="link-underline-animated text-lg font-medium decoration-white/40 underline-offset-4 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black"
+            className="text-lg font-medium underline decoration-white/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black"
             aria-label={`Email ${contact.email}`}
           >
             Shoot me an email
@@ -48,7 +48,7 @@ export const ContactPanel = () => {
             href={contact.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="link-underline-animated text-lg font-medium decoration-white/40 underline-offset-4 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black"
+            className="text-lg font-medium underline decoration-white/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black"
             aria-label={`LinkedIn ${contact.linkedinLabel}`}
           >
             LinkedIn
@@ -58,11 +58,11 @@ export const ContactPanel = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-12 text-sm text-white/50"
+          className="mt-12 text-sm text-red-900"
         >
           References available upon request.
         </motion.p>
-        <footer className="mt-20 border-t border-white/10 pt-8 text-center text-sm text-white/40">
+        <footer className="mt-20 border-t border-white/10 pt-8 text-center text-sm text-red-900">
           <p>© {new Date().getFullYear()} {contact.name}.</p>
           <p className="mt-2">Thanks for dropping by! Stay connected and join me on my journey.</p>
         </footer>

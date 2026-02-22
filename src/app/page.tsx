@@ -12,7 +12,7 @@ const Home = () => (
       Skip to content
     </a>
     <Nav />
-    <main className="relative" id="main" role="main">
+    <main className="relative overflow-x-hidden" id="main" role="main">
       <Hero />
       <HorizontalScrollSection />
     </main>

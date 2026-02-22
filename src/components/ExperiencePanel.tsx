@@ -22,19 +22,20 @@ type ExperiencePanelProps = {
 };
 
 export const ExperiencePanel = ({ innerScrollY }: ExperiencePanelProps) => {
+  const useInnerScroll = Boolean(innerScrollY);
   return (
     <section
-      className="relative flex h-dvh w-full flex-col overflow-hidden border-t border-white/15"
+      className={`relative flex w-full flex-col border-t border-white/15 ${useInnerScroll ? "md:h-dvh md:overflow-hidden" : ""} min-h-dvh`}
       aria-labelledby="experience-heading"
     >
       <DecorativePhoto src="/images/photography/experience-1.jpeg" alt="" corner="topLeft" rotation={5} width={230} />
       <DecorativePhoto src="/images/photography/experience-2.jpeg" alt="" corner="bottomRight" rotation={-8} width={210} />
       <motion.div
-        className="relative z-10 w-full flex-1 px-8 pt-16 pb-[130vh] md:px-16 md:pt-20 lg:px-24"
+        className={`relative z-10 w-full flex-1 px-8 pt-16 md:px-16 md:pt-20 lg:px-24 ${useInnerScroll ? "pb-[130vh]" : "pb-16"}`}
         style={innerScrollY ? { y: innerScrollY } : undefined}
       >
         <div className="mx-auto w-full max-w-4xl">
-          <p className="font-display text-xs uppercase tracking-[0.4em] text-white/40" aria-hidden="true">
+          <p className="font-display text-xs uppercase tracking-[0.4em] text-red-900" aria-hidden="true">
             Me #02
           </p>
           <motion.h2

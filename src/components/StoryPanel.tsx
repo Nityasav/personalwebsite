@@ -4,26 +4,36 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { contact } from "@/data/resume";
-import { SCROLL_OFFSET_VH } from "@/lib/scroll";
+import { useIsMobile } from "@/hooks/useMediaQuery";
+import { HORIZONTAL_PROGRESS, HORIZONTAL_SCROLL_TO_EVENT } from "@/lib/scroll";
 import { DecorativePhoto } from "./DecorativePhoto";
 
 const ABOUT_PORTRAIT_SRC = "/images/me.jpeg";
 
 export const StoryPanel = () => {
   const [portraitError, setPortraitError] = useState(false);
+  const isMobile = useIsMobile();
 
   const handleProjectsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
+    if (isMobile) {
+      document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
     const horizontal = document.getElementById("horizontal-scroll");
     if (!horizontal) return;
-    const top = horizontal.getBoundingClientRect().top + window.scrollY;
-    const vhPx = window.innerHeight;
-    const targetScroll = top + (SCROLL_OFFSET_VH.project * vhPx) / 100;
-    window.scrollTo({ top: targetScroll, behavior: "smooth" });
+    const sectionStart = horizontal.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top: sectionStart, behavior: "smooth" });
+    window.dispatchEvent(
+      new CustomEvent(HORIZONTAL_SCROLL_TO_EVENT, {
+        detail: { progress: HORIZONTAL_PROGRESS.project },
+      })
+    );
   };
 
   return (
     <section
+      id="story"
       className="relative flex min-h-dvh w-full items-center border-t border-white/15 px-8 py-16 md:px-16 lg:px-24"
       aria-labelledby="story-heading"
     >
@@ -35,7 +45,7 @@ export const StoryPanel = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="relative aspect-[4/5] w-full max-w-xs overflow-hidden rounded-2xl bg-white/5 ml-8 md:ml-12"
+          className="relative aspect-[4/5] w-full max-w-xs overflow-hidden rounded-2xl bg-white/5 mx-auto md:ml-8 md:mr-0 md:ml-12"
         >
           {!portraitError && (
             <Image
@@ -56,7 +66,7 @@ export const StoryPanel = () => {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="flex flex-col justify-center"
         >
-          <p className="font-display text-xs uppercase tracking-[0.4em] text-white/40" aria-hidden="true">
+          <p className="font-display text-xs uppercase tracking-[0.4em] text-red-900" aria-hidden="true">
             Me #01
           </p>
           <h2

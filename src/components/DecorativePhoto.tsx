@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useIsMobile } from "@/hooks/useMediaQuery";
 
 type Corner = "topRight" | "topLeft" | "bottomRight" | "bottomLeft";
 
@@ -31,13 +32,15 @@ export const DecorativePhoto = ({
   className = "",
 }: DecorativePhotoProps) => {
   const [imageFailed, setImageFailed] = useState(false);
-
+  const isMobile = useIsMobile();
   const handleImageError = () => setImageFailed(true);
+
+  const sizeStyle = isMobile ? { width: "min(40vw, 160px)" } : { width };
 
   return (
     <motion.div
       className={`absolute z-0 pointer-events-none ${CORNER_STYLES[corner]} ${className}`.trim()}
-      style={{ width }}
+      style={sizeStyle}
       aria-hidden="true"
       initial={{ opacity: 0, scale: 0.92, rotate: rotation }}
       animate={{ opacity: 1, scale: 1, rotate: rotation }}
@@ -56,7 +59,7 @@ export const DecorativePhoto = ({
           />
         )}
         <div
-          className="absolute inset-0 bg-black/50 rounded-sm"
+          className="absolute inset-0 bg-black/30 rounded-sm"
           aria-hidden="true"
         />
       </div>

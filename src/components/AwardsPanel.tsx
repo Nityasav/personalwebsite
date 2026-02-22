@@ -8,7 +8,7 @@ export const AwardsPanel = () => {
   return (
     <section
       id="awards"
-      className="relative flex min-h-dvh w-full items-center overflow-y-auto border-t border-white/15 px-8 py-16 md:px-16 lg:px-24"
+      className="relative flex min-h-dvh w-full items-center overflow-visible border-t border-white/15 px-8 py-16 md:overflow-y-auto md:px-16 lg:px-24"
       aria-labelledby="awards-heading"
     >
       <DecorativePhoto src="/images/photography/awards-1.jpeg" alt="" corner="topLeft" rotation={-3} width={210} />
