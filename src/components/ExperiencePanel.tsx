@@ -91,7 +91,7 @@ export const ExperiencePanel = ({ innerScrollY }: ExperiencePanelProps) => {
       </motion.div>
       {/* Hint at bottom of viewport when at top of content */}
       <div className="pointer-events-none absolute bottom-8 left-1/2 -translate-x-1/2 text-center text-xs uppercase tracking-[0.3em] text-white/40" aria-hidden="true">
-        Keep scrolling to explore →
+
       </div>
     </section>
   );

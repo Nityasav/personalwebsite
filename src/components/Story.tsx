@@ -54,11 +54,8 @@ export const Story = () => {
             Hello, I&apos;m {contact.name.split(" ")[0]}
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-white/85">
-            I turn ideas into practical results. From building SEO platforms at
-            Clover Labs to co-founding Antifragility Labs and leading
-            technology at Eclipse JA, I focus on learning, adapting, and
-            executing—whether it&apos;s full-stack engineering, AI products, or
-            scaling systems that drive growth.
+            done is greater than perfect. Through my experiences, I've learned that the key to success is about surrounding yourself with people who are better than you and never being the smartest person in the room. I am currently working at Clover Labs as a Software Engineer, where I am building the future of growth, and 
+            have co-founded Antifragility Labs, a company that provides SEO and GEO services. We sold this company to Clover Labs for a six-figure valuation. I am now learning from someone of the smartest people in Canada, and part of Canada's fastest growing company as the youngest member. 
           </p>
           <p className="mt-4 text-lg leading-relaxed text-white/85">
             Let&apos;s design-dive. Explore selected projects below.

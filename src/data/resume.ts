@@ -35,7 +35,7 @@ export const experiences: Experience[] = [
   },
   {
     role: "Vice President of Technology",
-    company: "Eclipse (Student company) JA",
+    company: "JA",
     location: "Ajax, Ontario",
     dateRange: "Nov 2022 – Present",
     highlights: [

@@ -61,21 +61,16 @@ export const StoryPanel = () => {
             Hello, I&apos;m {contact.name.split(" ")[0]}
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-white/85 md:text-xl">
-            I turn ideas into practical results. From building SEO platforms at
-            Clover Labs to co-founding Antifragility Labs and leading
-            technology at Eclipse JA, I focus on learning, adapting, and
-            executing—whether it&apos;s full-stack engineering, AI products, or
-            scaling systems that drive growth.
+         I've learned that you should never be the smartest person in the room. I am currently working at Clover Labs as a Software Engineer, and co-founded Antifragility Labs, a company that provides SEO and GEO services. We sold this company to Clover Labs for a six-figure valuation. I am now learning from some of the smartest people in Canada, and part of Canada's fastest growing company as the youngest member. 
           </p>
           <p className="mt-4 text-lg leading-relaxed text-white/85 md:text-xl">
-            Let&apos;s design-dive!{" "}
             <a
               href="#projects"
-              className="link-underline-animated decoration-white/40 underline-offset-4 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black"
+              className="underline decoration-white/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black"
               onClick={handleProjectsClick}
               aria-label="Jump to Projects section"
             >
-              Explore selected projects.
+              View my projects.
             </a>
           </p>
         </motion.div>
