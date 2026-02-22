@@ -1,29 +1,33 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { contact } from "@/data/resume";
 
 const GREETINGS = ["HELLO", "NAMASTE", "HOLA", "Bonjour", "Olá"];
 
-const container = {
+const getContainer = (reduceMotion: boolean | null) => ({
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0.2 },
+    transition: reduceMotion
+      ? { staggerChildren: 0, delayChildren: 0 }
+      : { staggerChildren: 0.08, delayChildren: 0.2 },
   },
-};
+});
 
 const item = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0 },
 };
 
-const wordContainer = {
+const getWordContainer = (reduceMotion: boolean | null) => ({
   hidden: {},
   show: {
-    transition: { staggerChildren: 0.06, delayChildren: 0.9 },
+    transition: reduceMotion
+      ? { staggerChildren: 0, delayChildren: 0 }
+      : { staggerChildren: 0.06, delayChildren: 0.9 },
   },
-};
+});
 
 const word = {
   hidden: { opacity: 0, y: 10 },
@@ -32,6 +36,7 @@ const word = {
 
 export const Hero = () => {
   const taglineWords = contact.tagline.split(/\s+/);
+  const reduceMotion = useReducedMotion();
 
   return (
     <section
@@ -39,8 +44,9 @@ export const Hero = () => {
       className="relative flex min-h-dvh flex-col justify-center overflow-hidden px-6 pt-24 pb-20 md:px-12 lg:px-20"
       aria-label="Hero"
     >
+      {/* Background: skip grayscale on mobile to reduce GPU cost and lag */}
       <div
-        className="absolute inset-0 z-0 bg-cover bg-no-repeat bg-[url(/background.jpeg)] [background-position:-410%_top] [filter:grayscale(100%)]"
+        className="absolute inset-0 z-0 bg-cover bg-no-repeat bg-[url(/background.jpeg)] [background-position:-410%_top] md:grayscale"
         aria-hidden="true"
       />
       <div className="absolute inset-0 z-[1] bg-black/50" aria-hidden="true" />
@@ -79,7 +85,7 @@ export const Hero = () => {
       </motion.div>
 
       <motion.div
-        variants={container}
+        variants={getContainer(reduceMotion ?? false)}
         initial="hidden"
         animate="show"
         className="relative z-10 max-w-4xl"
@@ -116,7 +122,7 @@ export const Hero = () => {
 
         {/* Tagline - word by word */}
         <motion.p
-          variants={wordContainer}
+          variants={getWordContainer(reduceMotion ?? false)}
           initial="hidden"
           animate="show"
           className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl"
@@ -154,11 +160,11 @@ export const Hero = () => {
         </motion.p>
       </motion.div>
 
-      {/* Repeating name marquee */}
+      {/* Repeating name marquee — slower on mobile to reduce paint cost */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.6 }}
+        transition={{ delay: reduceMotion ? 0 : 1.2, duration: reduceMotion ? 0.2 : 0.6 }}
         className="absolute bottom-6 left-0 right-0 z-10 overflow-hidden md:bottom-8"
         aria-hidden="true"
       >

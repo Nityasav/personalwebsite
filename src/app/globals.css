@@ -59,6 +59,18 @@ img:not(.photo-color) {
   animation: marquee 25s linear infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation-duration: 50s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce), (max-width: 768px) {
+  .animate-marquee {
+    animation-duration: 40s;
+  }
+}
+
 /* Ambient / aura animations */
 @keyframes float {
   0%,
@@ -133,6 +145,19 @@ img:not(.photo-color) {
   }
   75% {
     transform: translateX(-2vw) translateY(-2vh);
+  }
+}
+
+/* Reduce motion on mobile and for accessibility — fewer/slower ambient animations */
+@media (prefers-reduced-motion: reduce) {
+  [style*="animation: float"],
+  [style*="animation: floatSlow"],
+  [style*="animation: gradientShift"],
+  [style*="animation: pulseGlow"],
+  [style*="animation: grain"],
+  [style*="animation: drift"] {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
 

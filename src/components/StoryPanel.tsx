@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { contact } from "@/data/resume";
 import { SCROLL_OFFSET_VH } from "@/lib/scroll";
@@ -7,11 +9,9 @@ import { DecorativePhoto } from "./DecorativePhoto";
 
 const ABOUT_PORTRAIT_SRC = "/images/me.jpeg";
 
-const handlePortraitError = (e: React.SyntheticEvent<HTMLImageElement>) => {
-  e.currentTarget.classList.add("hidden");
-};
-
 export const StoryPanel = () => {
+  const [portraitError, setPortraitError] = useState(false);
+
   const handleProjectsClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const horizontal = document.getElementById("horizontal-scroll");
@@ -37,12 +37,17 @@ export const StoryPanel = () => {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="relative aspect-[4/5] w-full max-w-xs overflow-hidden rounded-2xl bg-white/5 ml-8 md:ml-12"
         >
-          <img
-            src={ABOUT_PORTRAIT_SRC}
-            alt="Portrait of Nitya Savaliya"
-            className="absolute inset-0 h-full w-full object-cover object-[center_38%] grayscale"
-            onError={handlePortraitError}
-          />
+          {!portraitError && (
+            <Image
+              src={ABOUT_PORTRAIT_SRC}
+              alt="Portrait of Nitya Savaliya"
+              fill
+              sizes="(max-width: 768px) 240px, 320px"
+              className="object-cover object-[center_38%] grayscale"
+              loading="lazy"
+              onError={() => setPortraitError(true)}
+            />
+          )}
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: 40 }}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import type { Project } from "@/data/resume";
 
@@ -24,12 +25,17 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
       className="card-border-hover group flex flex-col overflow-hidden rounded-none border border-white/10 bg-black transition-colors hover:border-white/20 hover:bg-black"
     >
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
-        <img
-          src={imagePath}
-          alt={project.title}
-          className={`absolute inset-0 h-full w-full object-cover ${imageFailed ? "hidden" : ""}`.trim()}
-          onError={handleImageError}
-        />
+        {!imageFailed && (
+          <Image
+            src={imagePath}
+            alt={project.title}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover"
+            loading="lazy"
+            onError={handleImageError}
+          />
+        )}
       </div>
       <div className="flex flex-1 flex-col p-5 md:p-6">
         <h3 className="font-display text-xl font-medium text-white md:text-2xl">

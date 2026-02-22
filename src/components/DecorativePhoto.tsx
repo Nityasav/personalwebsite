@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 type Corner = "topRight" | "topLeft" | "bottomRight" | "bottomLeft";
@@ -43,12 +44,17 @@ export const DecorativePhoto = ({
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-white/20 bg-white/5 shadow-lg">
-        <img
-          src={src}
-          alt={alt}
-          className={`photo-color absolute inset-0 h-full w-full object-cover brightness-[0.85] contrast-[1.05] ${imageFailed ? "hidden" : ""}`.trim()}
-          onError={handleImageError}
-        />
+        {!imageFailed && (
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            sizes="(max-width: 768px) 160px, 240px"
+            className="photo-color object-cover brightness-[0.85] contrast-[1.05]"
+            loading="lazy"
+            onError={handleImageError}
+          />
+        )}
         <div
           className="absolute inset-0 bg-black/50 rounded-sm"
           aria-hidden="true"

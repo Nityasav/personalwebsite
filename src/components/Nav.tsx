@@ -1,8 +1,11 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { SCROLL_OFFSET_VH, type ScrollKey } from "@/lib/scroll";
+
+const isTouchDevice = () =>
+  typeof window !== "undefined" && ("ontouchstart" in window || navigator.maxTouchPoints > 0);
 
 const SECTIONS = [
   { id: "horizontal-scroll", label: "About", navLabel: "About", scrollKey: "about" as const },
@@ -15,20 +18,22 @@ export const Nav = () => {
   const { scrollYProgress } = useScroll();
   const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
-  const handleNavClick = (id: string, scrollKey?: ScrollKey) => {
+  const handleNavClick = useCallback((id: string, scrollKey?: ScrollKey) => {
     setOpen(false);
+    const useSmooth = !isTouchDevice();
+    const scrollOpts: ScrollToOptions = { behavior: useSmooth ? "smooth" : "auto" };
     const horizontal = document.getElementById("horizontal-scroll");
     if (horizontal && scrollKey !== undefined) {
       const top = horizontal.getBoundingClientRect().top + window.scrollY;
       const vhPx = window.innerHeight;
       const offsetVh = SCROLL_OFFSET_VH[scrollKey];
       const targetScroll = top + (offsetVh * vhPx) / 100;
-      window.scrollTo({ top: targetScroll, behavior: "smooth" });
+      window.scrollTo({ top: targetScroll, ...scrollOpts });
       return;
     }
     const el = document.getElementById(id);
-    el?.scrollIntoView({ behavior: "smooth" });
-  };
+    el?.scrollIntoView(scrollOpts);
+  }, []);
 
   const handleKeyDown = (
     e: React.KeyboardEvent<HTMLButtonElement>,
@@ -131,7 +136,7 @@ export const Nav = () => {
                 className="link-underline-animated py-4 text-left font-display text-2xl uppercase tracking-wider text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black"
                 tabIndex={0}
               >
-                {navLabel} {navLabel}
+                {navLabel}
               </button>
             ))}
           </div>
