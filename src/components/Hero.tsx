@@ -46,7 +46,7 @@ export const Hero = () => {
     >
       {/* Background: skip grayscale on mobile to reduce GPU cost and lag */}
       <div
-        className="absolute inset-0 z-0 bg-cover bg-no-repeat bg-[url(/background.jpeg)] [background-position:-410%_top] md:grayscale"
+        className="absolute inset-0 z-0 bg-cover bg-no-repeat bg-[url(/background.jpeg)] [background-position:-350%_top] md:grayscale"
         aria-hidden="true"
       />
       <div className="absolute inset-0 z-[1] bg-black/50" aria-hidden="true" />
