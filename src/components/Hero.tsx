@@ -40,7 +40,7 @@ export const Hero = () => {
       aria-label="Hero"
     >
       <div
-        className="absolute inset-0 z-0 bg-cover bg-no-repeat bg-[url(/background.jpeg)] [background-position:-350%_top] [filter:grayscale(100%)]"
+        className="absolute inset-0 z-0 bg-cover bg-no-repeat bg-[url(/background.jpeg)] [background-position:-410%_top] [filter:grayscale(100%)]"
         aria-hidden="true"
       />
       <div className="absolute inset-0 z-[1] bg-black/50" aria-hidden="true" />
