@@ -2,9 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState } from "react";
-
-// Scroll offset (vh) into the horizontal section to show each section
-const SCROLL_OFFSET_VH = { about: 0, project: 440, contact: 1250 } as const;
+import { SCROLL_OFFSET_VH, type ScrollKey } from "@/lib/scroll";
 
 const SECTIONS = [
   { id: "horizontal-scroll", label: "About", navLabel: "About", scrollKey: "about" as const },
@@ -17,10 +15,10 @@ export const Nav = () => {
   const { scrollYProgress } = useScroll();
   const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
-  const handleNavClick = (id: string, scrollKey?: keyof typeof SCROLL_OFFSET_VH) => {
+  const handleNavClick = (id: string, scrollKey?: ScrollKey) => {
     setOpen(false);
     const horizontal = document.getElementById("horizontal-scroll");
-    if (horizontal && scrollKey) {
+    if (horizontal && scrollKey !== undefined) {
       const top = horizontal.getBoundingClientRect().top + window.scrollY;
       const vhPx = window.innerHeight;
       const offsetVh = SCROLL_OFFSET_VH[scrollKey];
@@ -35,19 +33,18 @@ export const Nav = () => {
   const handleKeyDown = (
     e: React.KeyboardEvent<HTMLButtonElement>,
     id: string,
-    scrollKey?: keyof typeof SCROLL_OFFSET_VH
+    scrollKey?: ScrollKey
   ) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      handleNavClick(id, scrollKey);
-    }
+    if (e.key !== "Enter" && e.key !== " ") return;
+    e.preventDefault();
+    handleNavClick(id, scrollKey);
   };
 
   return (
     <>
       {/* Progress bar - Sanni Sahil style */}
       <motion.div
-        className="fixed left-0 top-0 z-30 h-0.5 bg-white/40"
+        className="fixed left-0 top-0 z-30 h-0.5 bg-white/40 shadow-[0_0_10px_rgba(255,255,255,0.3)]"
         style={{ width: progressWidth }}
         aria-hidden="true"
       />
@@ -57,7 +54,7 @@ export const Nav = () => {
         <button
           type="button"
           onClick={() => setOpen((o) => !o)}
-          className="font-display text-xs uppercase tracking-[0.3em] text-white/80 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black md:text-sm"
+          className="btn-border-animated font-display rounded-none px-4 py-2 text-xs uppercase tracking-[0.3em] text-white/80 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black md:text-sm"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
@@ -83,7 +80,7 @@ export const Nav = () => {
               type="button"
               onClick={() => handleNavClick(id, scrollKey)}
               onKeyDown={(e) => handleKeyDown(e, id, scrollKey)}
-              className="font-display text-2xl uppercase tracking-wider text-white/90 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black md:text-4xl lg:text-5xl"
+              className="link-underline-animated font-display text-2xl uppercase tracking-wider text-white/90 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black md:text-4xl lg:text-5xl"
               aria-label={`Go to ${label}`}
               tabIndex={open ? 0 : -1}
             >
@@ -99,7 +96,7 @@ export const Nav = () => {
         <button
           type="button"
           onClick={() => setOpen((o) => !o)}
-          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-none border border-white/20 bg-black/80 text-white focus:outline-none focus:ring-2 focus:ring-white/50"
+          className="btn-border-animated flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-none bg-black/80 text-white focus:outline-none focus:ring-2 focus:ring-white/50"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
@@ -131,7 +128,7 @@ export const Nav = () => {
                 type="button"
                 onClick={() => handleNavClick(id, scrollKey)}
                 onKeyDown={(e) => handleKeyDown(e, id, scrollKey)}
-                className="py-4 text-left font-display text-2xl uppercase tracking-wider text-white underline-offset-4 hover:underline focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black"
+                className="link-underline-animated py-4 text-left font-display text-2xl uppercase tracking-wider text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black"
                 tabIndex={0}
               >
                 {navLabel} {navLabel}

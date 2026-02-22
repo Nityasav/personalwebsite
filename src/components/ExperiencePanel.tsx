@@ -27,10 +27,10 @@ export const ExperiencePanel = ({ innerScrollY }: ExperiencePanelProps) => {
       className="relative flex h-dvh w-full flex-col overflow-hidden border-t border-white/15"
       aria-labelledby="experience-heading"
     >
-      <DecorativePhoto src="/images/photography/experience-1.jpeg" alt="" corner="topLeft" rotation={5} width={270} />
-      <DecorativePhoto src="/images/photography/experience-2.jpeg" alt="" corner="bottomRight" rotation={-8} width={250} />
+      <DecorativePhoto src="/images/photography/experience-1.jpeg" alt="" corner="topLeft" rotation={5} width={230} />
+      <DecorativePhoto src="/images/photography/experience-2.jpeg" alt="" corner="bottomRight" rotation={-8} width={210} />
       <motion.div
-        className="relative z-10 w-full flex-1 px-8 pt-16 pb-[90vh] md:px-16 md:pt-20 lg:px-24"
+        className="relative z-10 w-full flex-1 px-8 pt-16 pb-[130vh] md:px-16 md:pt-20 lg:px-24"
         style={innerScrollY ? { y: innerScrollY } : undefined}
       >
         <div className="mx-auto w-full max-w-4xl">

@@ -11,8 +11,8 @@ export const AwardsPanel = () => {
       className="relative flex min-h-dvh w-full items-center overflow-y-auto border-t border-white/15 px-8 py-16 md:px-16 lg:px-24"
       aria-labelledby="awards-heading"
     >
-      <DecorativePhoto src="/images/photography/awards-1.jpeg" alt="" corner="topLeft" rotation={-3} width={250} />
-      <DecorativePhoto src="/images/photography/awards-2.jpeg" alt="" corner="bottomRight" rotation={6} width={260} />
+      <DecorativePhoto src="/images/photography/awards-1.jpeg" alt="" corner="topLeft" rotation={-3} width={210} />
+      <DecorativePhoto src="/images/photography/awards-2.jpeg" alt="" corner="bottomRight" rotation={6} width={220} />
       <div className="relative z-10 mx-auto w-full max-w-4xl py-8">
         <motion.h2
           id="awards-heading"
@@ -30,12 +30,16 @@ export const AwardsPanel = () => {
           className="mt-12 flex flex-wrap gap-3"
         >
           {awardsAndClubs.map((award, index) => (
-            <span
+            <motion.span
               key={index}
-              className="rounded-none border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/85"
+              initial={{ opacity: 0, y: 8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-20px" }}
+              transition={{ duration: 0.35, delay: index * 0.04 }}
+              className="tag-border-hover rounded-none border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/85"
             >
               {award}
-            </span>
+            </motion.span>
           ))}
         </motion.div>
       </div>

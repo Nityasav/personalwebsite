@@ -49,6 +49,306 @@ img:not(.photo-color) {
   animation: marquee 25s linear infinite;
 }
 
+/* Ambient / aura animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(3%, -4%) scale(1.02);
+  }
+  50% {
+    transform: translate(-2%, 2%) scale(0.98);
+  }
+  75% {
+    transform: translate(4%, 3%) scale(1.01);
+  }
+}
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(-5%, -3%);
+  }
+  66% {
+    transform: translate(3%, 5%);
+  }
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.15) translate(2%, -2%);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes grain {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(2vw) translateY(-1vh);
+  }
+  50% {
+    transform: translateX(-1vw) translateY(2vh);
+  }
+  75% {
+    transform: translateX(-2vw) translateY(-2vh);
+  }
+}
+
+/* --- Custom cursor: hide default when custom cursor active --- */
+body.cursor-custom {
+  cursor: none;
+}
+body.cursor-custom a,
+body.cursor-custom button,
+body.cursor-custom [role="button"] {
+  cursor: none;
+}
+
+/* --- Text animations (B&W) --- */
+@keyframes textReveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0.6;
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes letterReveal {
+  from {
+    opacity: 0;
+    transform: translateY(0.5em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-text-reveal {
+  animation: textReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+
+/* --- Block / card animations --- */
+@keyframes blockFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes borderDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-block-in {
+  animation: blockFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* --- Button / border animations (B&W) --- */
+@keyframes borderGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.08);
+  }
+}
+
+@keyframes borderFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes underlineSweep {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+@keyframes lineExpand {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.btn-border-animated {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: transparent;
+  overflow: hidden;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-border-animated::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent,
+    rgba(255, 255, 255, 0.2)
+  );
+  background-size: 300% 100%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.25s;
+  animation: borderFlow 4s linear infinite;
+}
+.btn-border-animated:hover::before,
+.btn-border-animated:focus-visible::before {
+  opacity: 1;
+}
+
+.link-underline-animated {
+  position: relative;
+}
+.link-underline-animated::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-underline-animated:hover::after,
+.link-underline-animated:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.card-border-hover {
+  position: relative;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.card-border-hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.06);
+}
+.card-border-hover:hover::after,
+.card-border-hover:focus-within::after {
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.25);
+  animation: borderGlow 2s ease-in-out infinite;
+}
+
+/* Heading with animated line under */
+.heading-line-animated {
+  position: relative;
+  display: inline-block;
+}
+.heading-line-animated::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.15em;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2));
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: lineExpand 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+
+/* Tag / pill with subtle border glow on hover */
+.tag-border-hover {
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.tag-border-hover:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.06);
+}
+
 /* Skip link and focus */
 .sr-only {
   position: absolute;

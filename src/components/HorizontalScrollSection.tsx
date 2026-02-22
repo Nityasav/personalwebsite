@@ -13,18 +13,19 @@ import { ContactPanel } from "./ContactPanel";
 // 0-160:    Story → Experience (x 0 → -100vw)
 // 160-310:  Experience inner scroll (150vh) — slower scroll down
 // 310-440:  Experience → Projects (x -100 → -200vw)
-// 440-620:  Projects inner scroll (180vh) — slower scroll down
-// 620-1320: Projects → Education → Awards → Contact (700vh for 300vw) — a bit faster scroll right
+// 440-560:  Projects inner scroll (120vh) — end earlier so less “down” before Education
+// 560-1050: Projects → Education → Awards → Contact (490vh for 300vw) — faster scroll right
 
-const SCROLL_RANGE_VH = 1320;
+const SCROLL_RANGE_VH = 1150;
+const CONTENT_END_VH = 1050;
 
-const P1 = 160 / SCROLL_RANGE_VH;   // Experience panel in view, start inner scroll
-const P2 = 310 / SCROLL_RANGE_VH;   // end Experience inner scroll (keep Y at end after this)
-const P3 = 440 / SCROLL_RANGE_VH;   // Projects panel in view, start inner scroll
-const P4 = 620 / SCROLL_RANGE_VH;   // end Projects inner scroll (keep Y at end after this)
-const P5 = 1;
+const P1 = 160 / SCROLL_RANGE_VH;
+const P2 = 320 / SCROLL_RANGE_VH;
+const P3 = 440 / SCROLL_RANGE_VH;
+const P4 = 560 / SCROLL_RANGE_VH;
+const P5_EFFECTIVE = CONTENT_END_VH / SCROLL_RANGE_VH;
 
-const INNER_SCROLL_EXPERIENCE_VH = 90;
+const INNER_SCROLL_EXPERIENCE_VH = 130;
 const INNER_SCROLL_PROJECTS_VH = 120;
 
 // Slow at start and end of each horizontal transition (so scroll-right doesn't feel fast at the start)
@@ -52,8 +53,8 @@ export const HorizontalScrollSection = () => {
       return `${-100 - easeInOutCubic(t) * 100}vw`;
     }
     if (p <= P4) return "-200vw";
-    if (p <= P5) {
-      const t = (p - P4) / (P5 - P4);
+    if (p <= P5_EFFECTIVE) {
+      const t = (p - P4) / (P5_EFFECTIVE - P4);
       return `${-200 - easeInOutCubic(t) * 300}vw`;
     }
     return "-500vw";

@@ -11,8 +11,8 @@ export const EducationPanel = () => {
       className="relative flex min-h-dvh w-full items-center overflow-y-auto border-t border-white/15 px-8 py-16 md:px-16 lg:px-24"
       aria-labelledby="education-heading"
     >
-      <DecorativePhoto src="/images/photography/education-1.jpeg" alt="" corner="topRight" rotation={-4} width={260} />
-      <DecorativePhoto src="/images/photography/education-2.jpeg" alt="" corner="bottomLeft" rotation={7} width={240} />
+      <DecorativePhoto src="/images/photography/education-1.jpeg" alt="" corner="topRight" rotation={-4} width={220} />
+      <DecorativePhoto src="/images/photography/education-2.jpeg" alt="" corner="bottomLeft" rotation={7} width={200} />
       <div className="relative z-10 mx-auto w-full max-w-4xl py-8">
         <motion.h2
           id="education-heading"

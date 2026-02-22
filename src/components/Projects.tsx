@@ -30,7 +30,7 @@ export const Projects = () => {
             </p>
           </div>
           <p className="text-sm uppercase tracking-widest text-white/50">
-            Scroll to discover
+      
           </p>
         </motion.div>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

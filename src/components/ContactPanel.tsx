@@ -11,8 +11,8 @@ export const ContactPanel = () => {
       className="relative flex min-h-dvh w-full items-center overflow-y-auto border-t border-white/15 px-8 py-16 md:px-16 lg:px-24"
       aria-labelledby="contact-heading"
     >
-      <DecorativePhoto src="/images/photography/contact-1.jpeg" alt="" corner="topLeft" rotation={-3} width={260} />
-      <DecorativePhoto src="/images/photography/contact-2.jpeg" alt="" corner="bottomRight" rotation={5} width={250} />
+      <DecorativePhoto src="/images/photography/contact-1.jpeg" alt="" corner="topLeft" rotation={-3} width={220} />
+      <DecorativePhoto src="/images/photography/contact-2.jpeg" alt="" corner="bottomRight" rotation={5} width={210} />
       <div className="relative z-10 mx-auto w-full max-w-4xl py-8">
         <motion.h2
           id="contact-heading"
@@ -39,7 +39,7 @@ export const ContactPanel = () => {
         >
           <a
             href={`mailto:${contact.email}`}
-            className="text-lg font-medium underline decoration-white/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
+            className="link-underline-animated text-lg font-medium decoration-white/40 underline-offset-4 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black"
             aria-label={`Email ${contact.email}`}
           >
             Shoot me an email
@@ -48,7 +48,7 @@ export const ContactPanel = () => {
             href={contact.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-lg font-medium underline decoration-white/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
+            className="link-underline-animated text-lg font-medium decoration-white/40 underline-offset-4 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black"
             aria-label={`LinkedIn ${contact.linkedinLabel}`}
           >
             LinkedIn

@@ -18,35 +18,63 @@ const item = {
   show: { opacity: 1, y: 0 },
 };
 
+const wordContainer = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.06, delayChildren: 0.9 },
+  },
+};
+
+const word = {
+  hidden: { opacity: 0, y: 10 },
+  show: { opacity: 1, y: 0 },
+};
+
 export const Hero = () => {
+  const taglineWords = contact.tagline.split(/\s+/);
+
   return (
     <section
       id="hero"
       className="relative flex min-h-dvh flex-col justify-center overflow-hidden px-6 pt-24 pb-20 md:px-12 lg:px-20"
       aria-label="Hero"
     >
-      {/* Background image - behind all content, grayscale to match B&W theme */}
       <div
-        className="absolute inset-0 z-0 bg-cover bg-no-repeat [filter:grayscale(100%)]"
-        style={{
-          backgroundImage: "url(/background.jpeg)",
-          backgroundPosition: "-350% top",
-        }}
+        className="absolute inset-0 z-0 bg-cover bg-no-repeat bg-[url(/background.jpeg)] [background-position:-350%_top] [filter:grayscale(100%)]"
         aria-hidden="true"
       />
-      {/* Dark overlay so image is less bright */}
       <div className="absolute inset-0 z-[1] bg-black/50" aria-hidden="true" />
+      <div
+        className="absolute inset-0 z-[1] opacity-30"
+        aria-hidden="true"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 50% at 50% 80%, rgba(255,255,255,0.08) 0%, transparent 60%)",
+          animation: "pulseGlow 8s ease-in-out infinite",
+        }}
+      />
+      <div
+        className="absolute bottom-0 left-0 right-0 z-[1] h-1/2 bg-gradient-to-t from-black/40 to-transparent"
+        aria-hidden="true"
+      />
 
-      {/* Greetings ticker - Sanni Sahil style */}
+      {/* Greetings - staggered fade + slight movement */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.5 }}
-        className="absolute left-6 right-6 top-32 flex flex-wrap gap-x-4 gap-y-1 text-sm uppercase tracking-[0.35em] text-white/40 md:left-12 md:right-12 md:top-36 md:text-base"
+        className="absolute left-6 right-6 top-32 z-10 flex flex-wrap gap-x-4 gap-y-1 text-sm uppercase tracking-[0.35em] text-white/40 md:left-12 md:right-12 md:top-36 md:text-base"
         aria-hidden="true"
       >
-        {GREETINGS.map((g) => (
-          <span key={g}>{g}</span>
+        {GREETINGS.map((g, i) => (
+          <motion.span
+            key={g}
+            initial={{ opacity: 0, x: -8 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5 + i * 0.1, duration: 0.4 }}
+          >
+            {g}
+          </motion.span>
         ))}
       </motion.div>
 
@@ -60,27 +88,53 @@ export const Hero = () => {
           variants={item}
           className="font-display text-sm uppercase tracking-[0.4em] text-white/50 md:text-base"
         >
-          Software Engineer · Builder
+          <motion.span
+            initial={{ opacity: 0, letterSpacing: "0.6em" }}
+            animate={{ opacity: 1, letterSpacing: "0.4em" }}
+            transition={{ delay: 0.35, duration: 0.6 }}
+          >
+            Software Engineer · Builder
+          </motion.span>
         </motion.p>
+
         <motion.h1
           variants={item}
           className="mt-2 font-display text-5xl font-semibold tracking-tight text-white md:text-7xl lg:text-8xl"
         >
           {contact.name}
         </motion.h1>
+
+        {/* Drawing underline under name */}
+        <motion.div
+          className="mt-1 h-0.5 max-w-md bg-gradient-to-r from-white/80 to-white/20"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          style={{ transformOrigin: "left" }}
+          aria-hidden="true"
+        />
+
+        {/* Tagline - word by word */}
         <motion.p
-          variants={item}
-          className="mt-6 max-w-2xl text-lg text-white/80 md:text-xl"
+          variants={wordContainer}
+          initial="hidden"
+          animate="show"
+          className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl"
         >
-          {contact.tagline}
+          {taglineWords.map((w, i) => (
+            <motion.span key={`${w}-${i}`} variants={word} className="inline">
+              {w}{" "}
+            </motion.span>
+          ))}
         </motion.p>
+
         <motion.div
           variants={item}
           className="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70"
         >
           <a
             href={`mailto:${contact.email}`}
-            className="underline decoration-white/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
+            className="link-underline-animated decoration-white/40 underline-offset-4 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black"
             aria-label={`Email ${contact.email}`}
           >
             {contact.email}
@@ -89,26 +143,23 @@ export const Hero = () => {
             href={contact.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="underline decoration-white/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
+            className="link-underline-animated decoration-white/40 underline-offset-4 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black"
             aria-label={`LinkedIn ${contact.linkedinLabel}`}
           >
             LinkedIn
           </a>
         </motion.div>
-        <motion.p
-          variants={item}
-          className="mt-16 text-sm uppercase tracking-widest text-white/50"
-        >
-          
+        <motion.p variants={item} className="mt-16 text-sm uppercase tracking-widest text-white/50">
+          {" "}
         </motion.p>
       </motion.div>
 
-      {/* Repeating name marquee - Sanni Sahil style (infinite scroll) */}
+      {/* Repeating name marquee */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.6 }}
-        className="absolute bottom-6 left-0 right-0 overflow-hidden md:bottom-8"
+        className="absolute bottom-6 left-0 right-0 z-10 overflow-hidden md:bottom-8"
         aria-hidden="true"
       >
         <div className="flex w-max animate-marquee whitespace-nowrap">

@@ -8,7 +8,7 @@ const PROFILE_LINKS = {
 export const contact = {
   name: "Nitya Savaliya",
   tagline:
-    "Naturally curious and driven to push the limits of technology, with a focus on learning, adapting, and executing to turn ideas into practical results.",
+    "Breaking through building. Learning through building. Building through breaking. Software Engineer, builder, and explorer.",
   email: "email@nitya.ca",
   linkedin: PROFILE_LINKS.linkedin,
   linkedinLabel: "Nitya Savaliya",

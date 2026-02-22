@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import type { Project } from "@/data/resume";
 
@@ -9,7 +10,10 @@ type ProjectCardProps = {
 };
 
 export const ProjectCard = ({ project, index }: ProjectCardProps) => {
+  const [imageFailed, setImageFailed] = useState(false);
   const imagePath = `/images/placeholders/${project.imagePlaceholderKey}.png`;
+
+  const handleImageError = () => setImageFailed(true);
 
   return (
     <motion.article
@@ -17,16 +21,14 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="group flex flex-col overflow-hidden rounded-none border border-white/10 bg-white/[0.02] transition-colors hover:border-white/20 hover:bg-white/[0.04]"
+      className="card-border-hover group flex flex-col overflow-hidden rounded-none border border-white/10 bg-black transition-colors hover:border-white/20 hover:bg-black"
     >
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-white/5">
+      <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
         <img
           src={imagePath}
           alt={project.title}
-          className="absolute inset-0 h-full w-full object-cover"
-          onError={(e) => {
-            e.currentTarget.style.display = "none";
-          }}
+          className={`absolute inset-0 h-full w-full object-cover ${imageFailed ? "hidden" : ""}`.trim()}
+          onError={handleImageError}
         />
       </div>
       <div className="flex flex-1 flex-col p-5 md:p-6">
@@ -49,7 +51,7 @@ export const ProjectCard = ({ project, index }: ProjectCardProps) => {
                 rel={
                   link.href.startsWith("http") ? "noopener noreferrer" : undefined
                 }
-                className="text-sm underline decoration-white/40 underline-offset-4 transition-colors hover:text-white hover:decoration-white"
+                className="link-underline-animated text-sm decoration-white/40 underline-offset-4 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-black"
                 aria-label={`${project.title} — ${link.label}`}
               >
                 {link.label}

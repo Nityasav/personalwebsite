@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 type Corner = "topRight" | "topLeft" | "bottomRight" | "bottomLeft";
@@ -14,64 +14,44 @@ type DecorativePhotoProps = {
   className?: string;
 };
 
-const cornerStyles: Record<Corner, string> = {
+const CORNER_STYLES: Record<Corner, string> = {
   topRight: "top-4 right-4 md:top-8 md:right-8",
   topLeft: "top-4 left-4 md:top-8 md:left-8",
   bottomRight: "bottom-4 right-4 md:bottom-8 md:right-8",
   bottomLeft: "bottom-4 left-4 md:bottom-8 md:left-8",
 };
 
-const ASPECT_RATIO = 4 / 3;
-
 export const DecorativePhoto = ({
   src,
   alt,
   corner,
   rotation = 0,
-  width = 240,
+  width = 200,
   className = "",
 }: DecorativePhotoProps) => {
-  const [loaded, setLoaded] = useState(false);
-  const [error, setError] = useState(false);
-  const [hasRetried, setHasRetried] = useState(false);
-  const [currentSrc, setCurrentSrc] = useState(src);
+  const [imageFailed, setImageFailed] = useState(false);
 
-  const height = Math.round(width * (1 / ASPECT_RATIO));
-
-  const handleError = useCallback(() => {
-    if (!hasRetried) {
-      setHasRetried(true);
-      setLoaded(false);
-      const separator = src.includes("?") ? "&" : "?";
-      setCurrentSrc(`${src}${separator}_=${Date.now()}`);
-    } else {
-      setError(true);
-    }
-  }, [src, hasRetried]);
-
-  if (error) return null;
+  const handleImageError = () => setImageFailed(true);
 
   return (
     <motion.div
-      className={`absolute z-0 pointer-events-none ${cornerStyles[corner]} ${className}`}
-      aria-hidden="true"
+      className={`absolute z-0 pointer-events-none ${CORNER_STYLES[corner]} ${className}`.trim()}
       style={{ width }}
+      aria-hidden="true"
       initial={{ opacity: 0, scale: 0.92, rotate: rotation }}
       animate={{ opacity: 1, scale: 1, rotate: rotation }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="relative overflow-hidden rounded-sm border border-white/20 bg-white/5 shadow-lg">
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-white/20 bg-white/5 shadow-lg">
         <img
-          src={currentSrc}
+          src={src}
           alt={alt}
-          width={width}
-          height={height}
-          loading="eager"
-          decoding="async"
-          className={`photo-color block h-auto w-full object-cover transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
-          style={{ aspectRatio: "4/3" }}
-          onLoad={() => setLoaded(true)}
-          onError={handleError}
+          className={`photo-color absolute inset-0 h-full w-full object-cover brightness-[0.85] contrast-[1.05] ${imageFailed ? "hidden" : ""}`.trim()}
+          onError={handleImageError}
+        />
+        <div
+          className="absolute inset-0 bg-black/50 rounded-sm"
+          aria-hidden="true"
         />
       </div>
     </motion.div>
