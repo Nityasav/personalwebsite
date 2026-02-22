@@ -26,7 +26,7 @@ export const Contact = () => {
           viewport={{ once: true }}
           className="mt-6 text-lg text-white/85 md:text-xl"
         >
-          Got a project that&apos;s so cool, it could make an iceberg crack a smile? Let&apos;s grab a virtual brainstorm session and make it even cooler!
+         I always love to meet new people. It is necessary to surround yourself with people who are better than you. After all, if you are the smartest person in the room, you are in the wrong room. Would love to connect with you!
         </motion.p>
         <motion.div
           initial={{ opacity: 0 }}
