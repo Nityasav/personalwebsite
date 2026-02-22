@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 
 type Corner = "topRight" | "topLeft" | "bottomRight" | "bottomLeft";
@@ -21,6 +21,8 @@ const cornerStyles: Record<Corner, string> = {
   bottomLeft: "bottom-4 left-4 md:bottom-8 md:left-8",
 };
 
+const ASPECT_RATIO = 4 / 3;
+
 export const DecorativePhoto = ({
   src,
   alt,
@@ -31,6 +33,21 @@ export const DecorativePhoto = ({
 }: DecorativePhotoProps) => {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
+  const [hasRetried, setHasRetried] = useState(false);
+  const [currentSrc, setCurrentSrc] = useState(src);
+
+  const height = Math.round(width * (1 / ASPECT_RATIO));
+
+  const handleError = useCallback(() => {
+    if (!hasRetried) {
+      setHasRetried(true);
+      setLoaded(false);
+      const separator = src.includes("?") ? "&" : "?";
+      setCurrentSrc(`${src}${separator}_=${Date.now()}`);
+    } else {
+      setError(true);
+    }
+  }, [src, hasRetried]);
 
   if (error) return null;
 
@@ -45,12 +62,16 @@ export const DecorativePhoto = ({
     >
       <div className="relative overflow-hidden rounded-sm border border-white/20 bg-white/5 shadow-lg">
         <img
-          src={src}
+          src={currentSrc}
           alt={alt}
+          width={width}
+          height={height}
+          loading="eager"
+          decoding="async"
           className={`photo-color block h-auto w-full object-cover transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
           style={{ aspectRatio: "4/3" }}
           onLoad={() => setLoaded(true)}
-          onError={() => setError(true)}
+          onError={handleError}
         />
       </div>
     </motion.div>

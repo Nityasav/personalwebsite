@@ -25,8 +25,33 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const photographyPreloads = [
+    "about-1",
+    "about-2",
+    "experience-1",
+    "experience-2",
+    "projects-1",
+    "projects-2",
+    "education-1",
+    "education-2",
+    "awards-1",
+    "awards-2",
+    "contact-1",
+    "contact-2",
+  ];
+
   return (
     <html lang="en" className={`${syne.variable} ${dmSans.variable}`}>
+      <head>
+        {photographyPreloads.map((name) => (
+          <link
+            key={name}
+            rel="preload"
+            as="image"
+            href={`/images/photography/${name}.jpeg`}
+          />
+        ))}
+      </head>
       <body className="min-h-screen bg-black text-white antialiased">
         {children}
       </body>
