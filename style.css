@@ -39,7 +39,8 @@ img { display: block; object-fit: cover; }
 .portrait { width: 80px; height: 80px; }
 .side h1.sig {
   margin-top: 14px;
-  font: 400 46px/1.1 "Snell Roundhand", "Brush Script MT", "Segoe Script", cursive;
+  font: 400 34px/1.15 "Snell Roundhand", "Brush Script MT", "Segoe Script", cursive;
+  white-space: nowrap;
   color: var(--blue);
 }
 .side .muted { font-size: 14px; line-height: 1.5; margin-top: 2px; }
