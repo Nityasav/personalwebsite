@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Nitya Savaliya</title>
-  <meta name="description" content="Software engineer at Clover Labs. Co-founded Antifragility Labs, acquired. Ajax, Ontario.">
+  <meta name="description" content="CS/BBA at the University of Waterloo. Co-founded Bull and Antifragility Labs (acquired by Clover Labs). Software engineer.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27><rect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%230b3d91%27/><text x=%2716%27 y=%2722%27 font-family=%27system-ui%27 font-weight=%27700%27 font-size=%2718%27 fill=%27white%27 text-anchor=%27middle%27>N</text></svg>">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -15,17 +15,19 @@
   <aside class="side">
     <img class="portrait" src="images/me.jpeg" alt="Nitya Savaliya" width="80" height="80">
     <h1>Nitya Savaliya</h1>
-    <p class="muted">Software engineer, Clover Labs<br>Ajax, Ontario</p>
+    <p class="muted">CS + BBA, University of Waterloo<br>Waterloo, Ontario</p>
 
     <nav>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
       <a href="#record">Record</a>
       <a href="#photos">Photos</a>
     </nav>
 
     <ul class="contact">
       <li><a href="mailto:email@nitya.ca">email@nitya.ca</a></li>
+      <li><a href="tel:+14372562427">437-256-2427</a></li>
       <li><a href="https://www.linkedin.com/in/nityasav">LinkedIn</a></li>
       <li><a href="https://github.com/Nityasav">GitHub</a></li>
       <li><a href="https://devpost.com/savnitya">Devpost</a></li>
@@ -38,42 +40,84 @@
 
   <main>
     <p class="intro">
-      I build software at <a class="chip" href="https://cloverlabs.ai"><img src="images/logos/cloverlabs.ai.png" alt="">Clover Labs</a>.
-      I co-founded <a class="chip" href="https://antifragility.io"><img src="images/logos/antifragility.io.png" alt="">Antifragility Labs</a>
-      in high school and it was acquired six months later.
+      I study computer science and business at <a class="chip" href="https://uwaterloo.ca"><img src="images/logos/uwaterloo.ca.png" alt="">Waterloo</a>.
+      I co-founded <a class="chip" href="https://trybull.ai"><img src="images/logos/trybull.ai.png" alt="">Bull</a> and
+      <a class="chip" href="https://antifragility.io"><img src="images/logos/antifragility.io.png" alt="">Antifragility Labs</a>,
+      which was acquired by <a class="chip" href="https://cloverlabs.ai"><img src="images/logos/cloverlabs.ai.png" alt="">Clover Labs</a>,
+      where I then became the youngest engineer.
       I try never to be the smartest person in the room.
     </p>
 
     <section id="experience">
       <h2>Experience</h2>
-      <div class="row"><b>Clover Labs</b><span>Software Engineer. Lead on the SEO platform used by Kalshi, GPTZero and Paraform.</span><time>2026 –</time></div>
-      <div class="row"><b>Antifragility Labs</b><span>Co-founder &amp; CTO. SEO and GEO platform, MVP to production, acquired by Clover Labs.</span><time>2025</time></div>
-      <div class="row"><b>Trace</b><span>Software Engineering Intern. Real-time StockX vs GOAT resale pricing backend.</span><time>2025</time></div>
-      <div class="row"><b>1855</b><span>Intern. Technical support for startups and local businesses in Whitby.</span><time>2025</time></div>
-      <div class="row"><b>JA</b><span>Vice President of Technology. Built the CSR safety chatbot, led the tech team.</span><time>2022 –</time></div>
+
+      <div class="row">
+        <b><a href="https://trybull.ai">Bull</a><small>Co-founder &amp; CTO</small></b>
+        <ul>
+          <li>Built a crypto trading platform that turns natural-language strategies into AI agents, orchestrating multi-agent execution over Snaptrade and Coinbase CDP.</li>
+          <li>Gated every live trade behind an approval flow and a daily bias check. 50 users and $1,000 in executed volume in two weeks. Interviewed by Y Combinator (S26).</li>
+          <li>Designed a backtesting engine to eliminate bias, plus a self-improvement loop that learns from previous trades and records a live reasoning history.</li>
+        </ul>
+        <time>Apr – Jul 2026</time>
+      </div>
+
+      <div class="row">
+        <b><a href="https://cloverlabs.ai">Clover Labs</a><small>Software Engineer</small></b>
+        <ul>
+          <li>Youngest member of Clover, on the core SEO platform (Next.js, React, TypeScript) used by Kalshi, GPTZero and Paraform across 200 businesses generating $300K MRR.</li>
+          <li>Built the first blog hosting product: businesses set up and publish blog pages from one platform for technical and content SEO. Used by 10+ businesses daily, ranking on page one for many keywords.</li>
+          <li>Shipped Blog Posts and Knowledge Base end to end, design to production, for 170+ businesses.</li>
+        </ul>
+        <time>Jan – Jun 2026</time>
+      </div>
+
+      <div class="row">
+        <b><a href="https://antifragility.io">Antifragility Labs</a><small>Co-founder &amp; CTO</small></b>
+        <ul>
+          <li>Led technical strategy from MVP to production in four months. Acquired by Clover Labs at a six-figure valuation.</li>
+          <li>Built a content pipeline (keyword clustering, generation, internal linking, image selection) that cut production from 5 hours to 5 minutes per article, growing to six-figure ARR.</li>
+          <li>Ran technical SEO and GEO for 7- and 8-figure clients, including NASDAQ-listed and Y Combinator companies, lifting impressions ~220%.</li>
+        </ul>
+        <time>Sep – Dec 2025</time>
+      </div>
+
+      <div class="row">
+        <b><a href="https://pario.jointrace.co">Trace</a><small>Software Engineering Intern</small></b>
+        <ul>
+          <li>Engineered a real-time pricing service that reconciles sneaker resale listings across StockX and GOAT, normalizing 200,000 listings a day.</li>
+          <li>Built the backing APIs in TypeScript, Bun and Drizzle ORM on PostgreSQL, handling rerouting and rate limits against both marketplaces for 100+ consumers and businesses.</li>
+        </ul>
+        <time>Jun – Aug 2025</time>
+      </div>
     </section>
 
     <section id="projects">
       <h2>Projects</h2>
-      <div class="row"><b>Hackbuddy</b><span>Voice AI agent that superconnects hackathon teams.</span><span class="links"><a href="https://github.com/Nityasav/hackbuddy">github</a> <a href="https://devpost.com/software/hackbuddy-dxp4fa">devpost</a></span></div>
-      <div class="row"><b>konnect</b><span>Pokémon Go meets LinkedIn. Best Pitch at Hack United.</span><span class="links"><a href="https://github.com/Nityasav/konnect">github</a> <a href="https://devpost.com/software/konnect-uqfmc3">devpost</a></span></div>
-      <div class="row"><b>Venturly</b><span>Workflow automations through AI agents. A TKS startup.</span><span class="links"><a href="https://venturly.ca">site</a> <a href="https://medium.com/@nityasav/masterplan-venturly-3fa98e25d5bb">masterplan</a></span></div>
-      <div class="row"><b>Therapeigh</b><span>Therapy chatbot that gives satirically wrong advice.</span><span class="links"><a href="https://github.com/Nityasav/thera-buddy-main">github</a> <a href="https://docs.google.com/presentation/d/12THspqR1iqiQOVjlNwVvRMvD6ZMSEmxNipcN1AcsbxI/edit?usp=sharing">deck</a></span></div>
-      <div class="row"><b>Samsung Proposal</b><span>Executive-level proposal. 1st of ~100 teams in the TKS International Samsung Challenge.</span><span class="links"><a href="https://docs.google.com/presentation/d/1Zlzny-Ez2OgGBhXMd_LoZtWCb4vl9bEW-05RnB1ipsc/edit?usp=sharing">deck</a></span></div>
-      <div class="row"><b>Sentiment Analysis</b><span>VADER vs RoBERTa on Amazon reviews.</span><span class="links"><a href="https://medium.com/@nityasav/enhancing-review-efficiency-through-sentiment-analysis-a-comparison-of-vader-and-roberta-c6920c9946f8">article</a> <a href="https://github.com/Nityasav/SentimentAnalysisAmazon">github</a></span></div>
-      <div class="row"><b>Text Summarizer</b><span>Transformer pipelines and BeautifulSoup.</span><span class="links"><a href="https://medium.com/@nityasav/saving-time-with-ai-building-a-text-summarizer-using-transformers-1d9888081889">article</a> <a href="https://github.com/Nityasav/Textsummarizer">github</a></span></div>
-      <div class="row"><b>News Digestor</b><span>Personalized news aggregation and summarization.</span><span class="links"><a href="https://medium.com/@nityasav/ever-since-i-was-a-kid-i-have-always-been-attached-to-the-ever-changing-world-where-active-wars-824edbd6ffc5">article</a> <a href="https://github.com/Nityasav/PersonalizedNewsDigestor">github</a></span></div>
+      <!-- TODO: Crawl website + devpost URLs -->
+      <div class="row"><b>Crawl<small>Hackathon</small></b><span>AI agents for technical SEO that track rankings and find keyword gaps.</span><span class="links"><a href="https://devpost.com/savnitya">website</a> <a href="https://devpost.com/savnitya">devpost</a></span></div>
+      <div class="row"><b>konnect<small>Hackathon win</small></b><span>Combining Pokémon Go and LinkedIn to help people connect. Winner at Hack United.</span><span class="links"><a href="https://devpost.com/software/konnect-uqfmc3">devpost</a> <a href="https://github.com/Nityasav/konnect">github</a></span></div>
+      <div class="row"><b>Sentiment Analysis<small>VADER, RoBERTa</small></b><span>Analyzes sentiment across datasets of Amazon reviews.</span><span class="links"><a href="https://github.com/Nityasav/SentimentAnalysisAmazon">github</a> <a href="https://medium.com/@nityasav/enhancing-review-efficiency-through-sentiment-analysis-a-comparison-of-vader-and-roberta-c6920c9946f8">article</a></span></div>
+      <div class="row"><b>Hackbuddy<small>Hackathon</small></b><span>Superconnector for hackathon teams through a voice AI agent.</span><span class="links"><a href="https://github.com/Nityasav/hackbuddy">github</a> <a href="https://devpost.com/software/hackbuddy-dxp4fa">devpost</a></span></div>
+      <!-- TODO: Ray Tracing and AI URL -->
+      <div class="row"><b>Writing</b><span><a href="https://medium.com/@nityasav/enhancing-review-efficiency-through-sentiment-analysis-a-comparison-of-vader-and-roberta-c6920c9946f8">Sentiment Analysis: VADER vs. RoBERTa</a> · <a href="https://medium.com/@nityasav/saving-time-with-ai-building-a-text-summarizer-using-transformers-1d9888081889">Text Summarization with Transformers</a> · <a href="https://medium.com/@nityasav">Ray Tracing and AI</a></span><span class="links"><a href="https://medium.com/@nityasav">medium</a></span></div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="row"><b>Languages</b><span>Python, SQL (Postgres), TypeScript</span></div>
+      <div class="row"><b>Frameworks</b><span>Next.js, React, Node.js, Bun, Drizzle ORM</span></div>
+      <div class="row"><b>Infrastructure</b><span>PostgreSQL, Supabase, Railway, Git, Redis</span></div>
+      <div class="row"><b>APIs</b><span>Shopify, Plaid, kickdevs.api, GSC, GA4, Framer, Coinbase CDP, Snaptrade, Exa</span></div>
     </section>
 
     <section id="record">
       <h2>Record</h2>
-      <div class="row two"><span>TKS International Samsung Challenge</span><time>1st / ~100</time></div>
-      <div class="row two"><span>Hack United, Best Pitch (konnect)</span><time>1st</time></div>
-      <div class="row two"><span>IKEA Challenge, TKS</span><time>Top 30 / 172</time></div>
-      <div class="row two"><span>DECA Regionals, Roleplay ETDM</span><time>Top 10</time></div>
-      <div class="row two"><span>JA Company of the Year · Battle of the Ads · Best Brand</span><time>1st</time></div>
-      <div class="row two"><span>The Knowledge Society, Velocity (top 7%)</span><time>2024 – 25</time></div>
-      <div class="row two"><span>Sinclair Secondary School, OSSD</span><time>2026</time></div>
+      <div class="row two"><span>University of Waterloo, Bachelor of Computer Science &amp; Business Administration (CS/BBA double degree)</span><time>2026 –</time></div>
+      <div class="row two"><span>Cansbridge Scholar</span><time>2026</time></div>
+      <div class="row two"><span>TKS × Samsung Challenge</span><time>1st / ~100 teams</time></div>
+      <div class="row two"><span>Hack United, konnect</span><time>Winner</time></div>
+      <div class="row two"><span>The Knowledge Society, Velocity</span><time>~top 7%</time></div>
+      <div class="row two"><span>CSMC Certification of Distinction</span><time>Waterloo CEMC</time></div>
     </section>
 
     <section id="photos">
