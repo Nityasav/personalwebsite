@@ -103,6 +103,8 @@ footer {
   position: absolute; left: 12px; bottom: -70px;
   font-size: 220px; font-weight: 700; line-height: 1; letter-spacing: -0.03em;
   color: var(--blue); opacity: 0.06; white-space: nowrap; user-select: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 20%, transparent 95%);
+  mask-image: linear-gradient(to bottom, #000 20%, transparent 95%);
 }
 
 /* phone */
