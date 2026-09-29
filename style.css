@@ -59,12 +59,26 @@ nav a:hover, nav a.active { color: var(--blue); font-weight: 500; }
 /* main */
 .intro { font-size: 17px; }
 .chip {
-  display: inline-flex; align-items: center; gap: 5px;
-  padding: 0 6px; border-radius: 3px;
-  background: var(--blue-light); color: var(--ink); text-decoration: none;
+  --tilt: 0deg;
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 1px 7px; border-radius: 4px;
+  background: var(--chip-bg, var(--blue-light)); color: var(--ink); text-decoration: none;
   white-space: nowrap;
+  transform-origin: center;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
 }
-.chip img { width: 13px; height: 13px; border-radius: 3px; }
+.chip-uw     { --chip-bg: #fff1bf; --tilt: -8deg; }
+.chip-bull   { --chip-bg: #e8e8ed; --tilt: 6deg; }
+.chip-af     { --chip-bg: #dcebff; --tilt: -5deg; }
+.chip-clover { --chip-bg: #d9f2e3; --tilt: 9deg; }
+
+.chip .ico {
+  width: 19px; height: 19px; border-radius: 4px;
+  transform: rotate(var(--tilt));
+  transition: transform 0.35s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+.chip:hover { transform: scale(1.1); filter: brightness(0.98); }
+.chip:hover .ico { transform: rotate(calc(var(--tilt) * 2)) scale(1.25); }
 
 /* landing-page preview card under a chip on hover (pointer devices only) */
 .chip { position: relative; }
