@@ -36,7 +36,7 @@ img { display: block; object-fit: cover; }
 
 /* sidebar */
 .side { position: sticky; top: 72px; }
-.portrait { width: 80px; height: 80px; }
+.portrait { width: 80px; height: 80px; border-radius: 12px; }
 .side h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; color: var(--blue); margin-top: 16px; }
 .side .muted { font-size: 14px; line-height: 1.5; margin-top: 2px; }
 
