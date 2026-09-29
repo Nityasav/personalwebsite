@@ -37,12 +37,7 @@ img { display: block; object-fit: cover; }
 /* sidebar */
 .side { position: sticky; top: 72px; }
 .portrait { width: 80px; height: 80px; }
-.side h1.sig {
-  margin-top: 14px;
-  font: 400 34px/1.15 "Snell Roundhand", "Brush Script MT", "Segoe Script", cursive;
-  white-space: nowrap;
-  color: var(--blue);
-}
+.side h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; color: var(--blue); margin-top: 16px; }
 .side .muted { font-size: 14px; line-height: 1.5; margin-top: 2px; }
 
 nav { margin-top: 28px; display: flex; flex-direction: column; font-size: 16px; line-height: 2; }
