@@ -48,6 +48,14 @@ nav a:hover, nav a.active { color: var(--blue); font-weight: 500; }
 .contact a { color: var(--muted); text-decoration: none; }
 .contact a:hover { color: var(--blue); }
 
+.sig {
+  display: inline-block;
+  margin-top: 40px;
+  font: 34px/1 "Snell Roundhand", "Brush Script MT", "Segoe Script", cursive;
+  color: var(--blue);
+  transform: rotate(-4deg);
+}
+
 
 /* main */
 .intro { font-size: 17px; }
