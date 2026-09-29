@@ -59,6 +59,7 @@ nav a:hover, nav a.active { color: var(--blue); font-weight: 500; }
 
 /* main */
 .intro { font-size: 17px; }
+.tagline { margin-top: 14px; }
 .chip {
   --tilt: 0deg;
   display: inline-flex; align-items: center; gap: 6px;
