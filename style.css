@@ -104,7 +104,6 @@ footer {
   font-size: 220px; font-weight: 700; line-height: 1; letter-spacing: -0.03em;
   color: var(--blue); opacity: 0.06; white-space: nowrap; user-select: none;
 }
-footer .muted { position: absolute; right: 32px; bottom: 24px; font-size: 13px; }
 
 /* phone */
 @media (max-width: 760px) {
@@ -117,5 +116,4 @@ footer .muted { position: absolute; right: 32px; bottom: 24px; font-size: 13px; 
   .grid { grid-template-columns: repeat(2, 1fr); }
   footer { padding: 0 20px 20px; height: 140px; }
   .watermark { font-size: 120px; bottom: -36px; }
-  footer .muted { right: 20px; bottom: 20px; }
 }
