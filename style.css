@@ -133,8 +133,9 @@ h2 {
 }
 .row .links a { margin-left: 8px; }
 
-.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; }
-.grid img { width: 100%; aspect-ratio: 4 / 3; }
+.gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+.gallery img { width: 100%; height: auto; aspect-ratio: 3 / 4; }
+#gallery { margin-top: 0; }
 
 /* footer with watermark */
 footer {
@@ -157,7 +158,7 @@ footer {
   .row { grid-template-columns: 1fr; gap: 2px; }
   .row time, .row .links { text-align: left; }
   .row .links a { margin: 0 8px 0 0; }
-  .grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   footer { padding: 0 20px 20px; height: 140px; }
   .watermark { font-size: 120px; bottom: -36px; }
 }
