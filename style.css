@@ -128,7 +128,7 @@ h2 {
 
 .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
 .gallery img { width: 100%; height: auto; aspect-ratio: 3 / 4; }
-#gallery { margin-top: 0; }
+#gallery, #showcase { margin-top: 0; }
 
 /* footer with watermark */
 footer {
