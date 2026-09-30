@@ -23,6 +23,16 @@ h1, h2, p, ul { margin: 0; }
 img { display: block; object-fit: cover; }
 .muted { color: var(--muted); }
 
+/* big rotated N behind everything */
+body::before {
+  content: ""; position: fixed; z-index: -1; pointer-events: none;
+  top: 50%; left: 50%; width: 513px; height: 400px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: #444; opacity: 0.45;
+  -webkit-mask: url(images/n.svg) center / contain no-repeat;
+  mask: url(images/n.svg) center / contain no-repeat;
+}
+
 /* layout */
 .page {
   max-width: 1060px;
@@ -48,7 +58,6 @@ nav a:hover, nav a.active { color: var(--blue); font-weight: 500; }
 .contact a { color: var(--muted); text-decoration: none; }
 .contact a:hover { color: var(--blue); }
 
-.sig { display: block; margin-top: 40px; height: 40px; width: auto; transform: rotate(45deg); transform-origin: center; }
 
 
 /* main */
