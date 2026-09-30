@@ -48,7 +48,7 @@ nav a:hover, nav a.active { color: var(--blue); font-weight: 500; }
 .contact a { color: var(--muted); text-decoration: none; }
 .contact a:hover { color: var(--blue); }
 
-.sig { display: block; margin-top: 40px; height: 40px; width: auto; }
+.sig { display: block; margin-top: 40px; height: 40px; width: auto; transform: rotate(45deg); transform-origin: center; }
 
 
 /* main */
