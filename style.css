@@ -139,7 +139,7 @@ h2 {
 }
 .project:hover { border-color: var(--blue-link); }
 .project .num { position: absolute; top: 20px; right: 22px; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
-.project h3 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; }
+.project h3 { margin: 0; padding-right: 28px; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; }
 .project .tag { margin: 2px 0 10px; font-size: 14px; color: var(--muted); }
 .project p { margin: 0; font-size: 15px; line-height: 1.55; color: #333; }
 .project .links { margin-top: 12px; font-size: 14px; }
