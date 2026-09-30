@@ -130,6 +130,21 @@ h2 {
 .gallery img { width: 100%; height: auto; aspect-ratio: 3 / 4; }
 #gallery, #showcase { margin-top: 0; }
 
+.projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 14px; }
+.project {
+  position: relative;
+  padding: 20px 22px 18px;
+  border: 1px solid var(--line); border-radius: 10px;
+  transition: border-color .15s;
+}
+.project:hover { border-color: var(--blue-link); }
+.project .num { position: absolute; top: 20px; right: 22px; font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.project h3 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; }
+.project .tag { margin: 2px 0 10px; font-size: 14px; color: var(--muted); }
+.project p { margin: 0; font-size: 15px; line-height: 1.55; color: #333; }
+.project .links { margin-top: 12px; font-size: 14px; }
+.project .links a { margin-right: 10px; }
+
 /* footer with watermark */
 footer {
   position: relative; overflow: hidden;
@@ -152,6 +167,7 @@ footer {
   .row time, .row .links { text-align: left; }
   .row .links a { margin: 0 8px 0 0; }
   .gallery { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .projects { grid-template-columns: 1fr; }
   footer { padding: 0 20px 20px; height: 140px; }
   .watermark { font-size: 120px; bottom: -36px; }
 }
